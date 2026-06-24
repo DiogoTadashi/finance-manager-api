@@ -15,7 +15,7 @@ public record ExpenseResponse(
         Category category,
         TransactionType type
 ) {
-    public static ExpenseResponse of(Expense expense) {
+    public static ExpenseResponse from(Expense expense) {
         return new ExpenseResponse(
                 expense.getId(),
                 expense.getDescription(),
