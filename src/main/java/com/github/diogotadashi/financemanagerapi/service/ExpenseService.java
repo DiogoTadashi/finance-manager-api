@@ -3,6 +3,7 @@ package com.github.diogotadashi.financemanagerapi.service;
 import com.github.diogotadashi.financemanagerapi.dto.ExpenseRequest;
 import com.github.diogotadashi.financemanagerapi.dto.ExpenseResponse;
 import com.github.diogotadashi.financemanagerapi.entity.Expense;
+import com.github.diogotadashi.financemanagerapi.exception.ExpenseNotFoundException;
 import com.github.diogotadashi.financemanagerapi.repository.ExpenseRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +19,33 @@ public class ExpenseService {
         Expense expense = Expense.builder()
                 .description(request.description())
                 .amount(request.amount())
+                .date(request.date())
                 .category(request.category())
                 .type(request.type())
                 .build();
 
         Expense savedExpense = repository.save(expense);
         return ExpenseResponse.from(savedExpense);
+    }
+
+    public List<ExpenseResponse> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(ExpenseResponse::from)
+                .toList();
+    }
+
+    public Expense findExpenseById(Long id) {
+        return repository.findById(id).orElseThrow(() ->
+                new ExpenseNotFoundException("Expense with id: " + id + " not found"));
+    }
+
+    public ExpenseResponse findById(Long id) {
+        return ExpenseResponse.from(findExpenseById(id));
+    }
+
+    public void delete(Long id) {
+        findExpenseById(id);
+        repository.deleteById(id);
     }
 }
