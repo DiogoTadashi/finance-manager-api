@@ -28,6 +28,17 @@ public class ExpenseService {
         return ExpenseResponse.from(savedExpense);
     }
 
+    public ExpenseResponse update(long id,ExpenseRequest request) {
+        Expense expense = findExpenseById(id);
+
+        expense.setDescription(request.description());
+        expense.setAmount(request.amount());
+        expense.setCategory(request.category());
+
+        Expense savedExpense = repository.save(expense);
+        return ExpenseResponse.from(savedExpense);
+    }
+
     public List<ExpenseResponse> findAll() {
         return repository.findAll()
                 .stream()
