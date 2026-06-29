@@ -19,7 +19,6 @@ public class ExpenseService {
         Expense expense = Expense.builder()
                 .description(request.description())
                 .amount(request.amount())
-                .date(request.date())
                 .category(request.category())
                 .type(request.type())
                 .build();

@@ -15,9 +15,6 @@ public record ExpenseRequest(
         BigDecimal amount,
 
         @NotNull
-        LocalDate date,
-
-        @NotNull
         Category category,
 
         @NotNull

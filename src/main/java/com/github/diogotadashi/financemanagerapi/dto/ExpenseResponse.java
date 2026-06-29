@@ -5,13 +5,13 @@ import com.github.diogotadashi.financemanagerapi.enums.Category;
 import com.github.diogotadashi.financemanagerapi.enums.TransactionType;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record ExpenseResponse(
         Long id,
         String description,
         BigDecimal amount,
-        LocalDate date,
+        LocalDateTime date,
         Category category,
         TransactionType type
 ) {
