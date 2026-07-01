@@ -30,7 +30,6 @@ public class Expense {
     @Positive(message = "Quantity must be greater than zero")
     private BigDecimal amount;
 
-    @CreationTimestamp
     private LocalDateTime date;
 
     @Enumerated(EnumType.STRING)

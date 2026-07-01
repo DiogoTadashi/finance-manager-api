@@ -7,6 +7,7 @@ import com.github.diogotadashi.financemanagerapi.exception.ExpenseNotFoundExcept
 import com.github.diogotadashi.financemanagerapi.repository.ExpenseRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -20,6 +21,7 @@ public class ExpenseService {
                 .description(request.description())
                 .amount(request.amount())
                 .category(request.category())
+                .date(request.date() != null ? request.date() : LocalDateTime.now())
                 .type(request.type())
                 .build();
 

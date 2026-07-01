@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record ExpenseRequest(
 
@@ -16,6 +17,8 @@ public record ExpenseRequest(
 
         @NotNull
         Category category,
+
+        LocalDateTime date,
 
         @NotNull
         TransactionType type
