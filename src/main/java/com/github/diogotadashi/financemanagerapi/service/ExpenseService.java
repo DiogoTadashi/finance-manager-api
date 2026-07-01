@@ -33,6 +33,7 @@ public class ExpenseService {
         expense.setDescription(request.description());
         expense.setAmount(request.amount());
         expense.setCategory(request.category());
+        expense.setType(request.type());
 
         Expense savedExpense = repository.save(expense);
         return ExpenseResponse.from(savedExpense);

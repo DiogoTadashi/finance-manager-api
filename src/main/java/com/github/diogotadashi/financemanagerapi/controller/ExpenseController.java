@@ -25,7 +25,7 @@ public class ExpenseController {
         return ResponseEntity.status(HttpStatus.CREATED).body(expenseService.save(request));
     }
 
-    @GetMapping("/search")
+    @GetMapping("/expenses")
     public ResponseEntity<List<ExpenseResponse>> findAll() {
         List<ExpenseResponse> expenseList = expenseService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(expenseList);
